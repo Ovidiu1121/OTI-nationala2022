@@ -159,6 +159,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="controler\ControlHarta.cs" />
     <Compile Include="controler\ControlUseri.cs" />
     <Compile Include="forms\FrmHome.cs">
       <SubType>Form</SubType>
@@ -178,6 +179,7 @@
     <Compile Include="mockups\MockupLogare.Designer.cs">
       <DependentUpon>MockupLogare.cs</DependentUpon>
     </Compile>
+    <Compile Include="model\Harta.cs" />
     <Compile Include="model\User.cs" />
     <Compile Include="panels\PnlAside.cs">
       <SubType>Component</SubType>

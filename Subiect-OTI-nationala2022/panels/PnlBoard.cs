@@ -1,4 +1,6 @@
-﻿using Subiect_OTI_nationala2022.state;
+﻿using Subiect_OTI_nationala2022.controler;
+using Subiect_OTI_nationala2022.model;
+using Subiect_OTI_nationala2022.state;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -31,10 +33,45 @@ namespace Subiect_OTI_nationala2022.panels
                 else
                 {
                     this.Paint-=new PaintEventHandler(grid_Paint);
-                   this.Invalidate();
+                    this.Invalidate();
                 }
 
             });
+
+            AppState.showHarta.Subscribe(value =>
+            {
+                if (value.Equals(true))
+                {
+                    ControlHarta control = new ControlHarta();
+                    List<Harta> lista = control.getLista();
+
+                    this.BringToFront();
+
+                    foreach (Harta harta in lista)
+                    {
+                        PictureBox pictureBox = new PictureBox();
+                        if (harta.Entitate.Equals("Robot"))
+                        {
+                            pictureBox.Image = Image.FromFile(Application.StartupPath +@"\Robot\Robot.png");
+                        }
+                        else if (harta.Entitate.Equals("Sticla")||harta.Entitate.Equals("Hartie")||harta.Entitate.Equals("Plastic"))
+                        {
+                            pictureBox.Image = Image.FromFile(Application.StartupPath +@"\MaterialeReciclabile\"+harta.Entitate+".png");
+                        }
+                        else
+                        {
+                            pictureBox.Image = Image.FromFile(Application.StartupPath +@"\Meduze\"+harta.Entitate+".png");
+                        }
+                        pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+                        pictureBox.Size = new System.Drawing.Size(60, 60);
+                        pictureBox.Location = new Point(harta.X*60, harta.Y*60);
+                        this.Controls.Add(pictureBox);
+
+                    }
+                }
+            });
+
+
 
         }
 
@@ -42,7 +79,7 @@ namespace Subiect_OTI_nationala2022.panels
         {
             Graphics g = e.Graphics;
 
-            Pen pen = new Pen(Color.Black, 2);
+            Pen pen = new Pen(Color.White, 2);
 
             int width = 1200;
             int height = 600;

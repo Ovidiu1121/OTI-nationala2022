@@ -1,7 +1,10 @@
-﻿using Subiect_OTI_nationala2022.state;
+﻿using Subiect_OTI_nationala2022.controler;
+using Subiect_OTI_nationala2022.model;
+using Subiect_OTI_nationala2022.state;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -60,6 +63,8 @@ namespace Subiect_OTI_nationala2022.panels
             this.btnincarcaharta.Size=new Size(145, 43);
             this.btnincarcaharta.Text="Incarca harta";
             this.btnincarcaharta.Font=new Font("Arial", 10, FontStyle.Bold);
+            this.btnincarcaharta.Click+=new EventHandler(incarcaHarta_Click);
+
 
             this.pnldeflcetor=new PnlDeflector();
             this.Controls.Add(this.pnldeflcetor);
@@ -169,6 +174,15 @@ namespace Subiect_OTI_nationala2022.panels
         {
              AppState.showGrid.OnNext(this.checkBox.Checked);
         }
+
+        public void incarcaHarta_Click(object sender,EventArgs e)
+        {
+
+            AppState.showHarta.OnNext(true);
+
+
+        }
+
 
 
     }
