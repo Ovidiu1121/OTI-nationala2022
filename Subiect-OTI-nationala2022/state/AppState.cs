@@ -13,6 +13,7 @@ namespace Subiect_OTI_nationala2022.state
 
         public static  Subject<Boolean> showGrid = new Subject<Boolean>();
 
+        public static Subject<Boolean> showHarta = new Subject<Boolean>();
 
     }
 }

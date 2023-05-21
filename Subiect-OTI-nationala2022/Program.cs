@@ -20,7 +20,6 @@ namespace Subiect_OTI_nationala2022
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FrmHome());
 
-
         }
     }
 }
